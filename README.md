@@ -27,13 +27,13 @@ export ANTHROPIC_AUTH_TOKEN="ollama"
 export CLAUDE_CODE_DISABLE_UNKNOWN_MODEL_WINDOW_ENFORCEMENT="1"
 
 _run_claude_local() {
-  echo "🚀 Starting native Node translation bridge..."
+  echo "!! Starting native Node translation bridge..."
   unset ANTHROPIC_API_KEY
   node ~/claude-bridge.js > /dev/null 2>&1 &
   local proxy_pid=$!
   sleep 1 
   claude --model claude-3-5-sonnet-latest
-  echo "🧹 Shutting down Node translation bridge..."
+  echo "!! Shutting down Node translation bridge..."
   kill $proxy_pid 2>/dev/null
 }
 alias claude-local='_run_claude_local'
